@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Simons Webapp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            {% if not session['username'] %}
+            <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+            </li>
+            {% endif %}
+            {% if session['username'] %}
+            <li class="nav-item">
+                <a class="nav-link" href="/user">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            {% endif %}
+
+        </ul>
+        <div class="my-2 my-lg-0">
+            {% if session['username'] %}
+            <a type="button" class="btn btn-outline-success my-2 my-sm-0" href="/logout">Logout </a>
+            {% else %}
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+                data-target="#modalLoginForm">
+                Login
+            </button>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/login" method="post">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <i class="fas fa-envelope prefix grey-text"></i>
+                        <input type="text" class="form-control" placeholder="username" name="nmHe" minlength="4"
+                            maxlength="32">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your Name</label>
+                    </div>
+                    <div class="md-form mb-3">
+                        <i class="fas fa-lock prefix grey-text"></i>
+                        <input type="password" class="form-control" placeholder="password" name="pwHe" minlength="4"
+                            maxlength="32">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <input type="submit" value="Login" class="btn btn-outline-success my-2 my-sm-0">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
