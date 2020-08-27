@@ -9,5 +9,8 @@ COPY . .
 # Install the dependencies
 RUN pip install -r requirements.txt
 
+#Needs Cloud to know which port to expose
+EXPOSE 8080
+
 # run the command to start uWSGI
 CMD ["uwsgi", "app.ini"]
