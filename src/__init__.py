@@ -2,6 +2,8 @@ from flask import Flask
 from datetime import timedelta
 from .extensions import db
 from .views import main
+from .api import UserApi, UserListApi
+from flask_restful import Api
 
 def create_app():
     app = Flask(__name__)
@@ -13,6 +15,12 @@ def create_app():
     app.secret_key ="uiusdakasfkjfasd4389078532turieahfg87z5021gkjdha43178dsiugqkjh15478" #you have to look over it again
     app.permanent_session_lifetime = timedelta(minutes = 5) #defines how long things are saved in the session
 
+    #Register Blueprint
     app.register_blueprint(main, url_prefix="/")
+
+    #Register REST-API
+    api = Api(app)
+    api.add_resource(UserApi, '/api/User/<int:userId>')
+    api.add_resource(UserListApi, '/api/User')
 
     return app
