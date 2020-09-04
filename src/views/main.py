@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, session, request, Blueprint
-from .models import User, Note
-from .extensions import db
+from src.models import User, Note
+from src.extensions import db
 from .auth import login_required
 
 main = Blueprint("main", __name__, static_folder = "static", template_folder = "templates")

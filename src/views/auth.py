@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, session, request, Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
-from .extensions import db
-from .models import User
+from src.extensions import db
+from src.models import User
 from functools import wraps
 
 
@@ -18,8 +18,6 @@ def login_required(function):
         else:
             return function(*args, **kwargs)
     return wrapper
-
-
 
 
 @auth.route("/login", methods=["POST"])

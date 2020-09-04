@@ -1,9 +1,9 @@
-from .auth import auth
+from .views.auth import auth
 from flask import Flask
 from datetime import timedelta
 from .extensions import db
-from .views import main
-from .restFul_api import UserApi, UserListApi, UserLogin
+from .views.main import main
+from .views.restFul_api import UserApi, UserListApi, UserLogin
 from flask_restful import Api
 
 def create_app():

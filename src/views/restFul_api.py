@@ -1,7 +1,7 @@
 from flask_restful import reqparse, abort, Resource, marshal_with, fields
 from flask import session
-from .models import User
-from .extensions import db 
+from src.models import User
+from src.extensions import db 
 from functools import wraps
 from werkzeug.security import check_password_hash
 
