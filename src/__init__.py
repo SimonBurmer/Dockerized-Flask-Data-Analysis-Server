@@ -3,6 +3,7 @@ from flask import Flask
 from datetime import timedelta
 from .extensions import db
 from .views.main import main
+from .views.api import flask_api
 from .views.restFul_api import UserApi, UserListApi, UserLogin
 from flask_restful import Api
 
@@ -19,11 +20,12 @@ def create_app():
     #Register Blueprint
     app.register_blueprint(main, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(flask_api, url_prefix="/api")
 
-    #Register REST-API
+    #Register restFul-api
     api = Api(app)
-    api.add_resource(UserApi, '/api/User/<int:userId>')
-    api.add_resource(UserListApi, '/api/User')
-    api.add_resource(UserLogin, '/api/Login')
+    api.add_resource(UserApi, '/ful-api/user/<int:userId>')
+    api.add_resource(UserListApi, '/ful-api/user')
+    api.add_resource(UserLogin, '/ful-api/login')
 
     return app

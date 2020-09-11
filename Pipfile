@@ -12,6 +12,7 @@ flask-sqlalchemy = "*"
 pymysql = "*"
 uwsgi = "*"
 flask-restful = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

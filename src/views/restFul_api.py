@@ -4,6 +4,7 @@ from src.models import User
 from src.extensions import db 
 from functools import wraps
 from werkzeug.security import check_password_hash
+from .api import login_required_api
 
 
 # Argument Parsing -- is a built-in support for request data validation
@@ -26,18 +27,6 @@ resource_fields = {
     'username': fields.String,
     'userpassword': fields.String,
 }
-
-
-#this is a secure user validation 
-def login_required_api(function):
-    @wraps(function)#required when stacking wrapper
-    def wrapper(*args, **kwargs):
-        if  not "username" in session:
-            # retruns none if user isn't a key in the dictionary (none is null in java)
-            abort(404, message="To get access to the API you have to loggin ")
-        else:
-            return function(*args, **kwargs)
-    return wrapper
 
 
 class UserLogin(Resource):
