@@ -1,6 +1,6 @@
 # Web-server
 
-a Python web server using Flask deployed on AWS Elastic Beanstalk.
+a Python web server deployed on AWS Elastic Beanstalk.
 
 ![Alt text](images/Notes-App1.png)
 ![Alt text](images/Notes-App2.png)
