@@ -1,4 +1,4 @@
-# Web-server
+# Flask Data Analysis Web Server
 
 a Python web server deployed on AWS Elastic Beanstalk.
 
