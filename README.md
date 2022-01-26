@@ -1,4 +1,4 @@
-# Flask Data Analysis Web Server
+# Flask Notes App
 
 a Python web server deployed on AWS Elastic Beanstalk.
 
